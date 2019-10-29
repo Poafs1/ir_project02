@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="01cd6611-40af-4420-8abe-9dfe2b49b512" name="Default Changelist" comment="" />
+    <list default="true" id="f8053d49-3068-45e1-a11c-9842d8e2b55d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JaccardSearcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JaccardSearcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StudentTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentTester.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectId" id="1Sjmw4kvUogoarCp5AZWDFp9vgm" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1SraiI5Nfqj8nTCqioX8ybofzvd" />
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -21,17 +31,44 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="StudentTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="StudentTester" />
+      <module name="p2_package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.StudentTester" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="01cd6611-40af-4420-8abe-9dfe2b49b512" name="Default Changelist" comment="" />
-      <created>1572085614872</created>
+      <changelist id="f8053d49-3068-45e1-a11c-9842d8e2b55d" name="Default Changelist" comment="" />
+      <created>1572324293354</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1572085614872</updated>
+      <updated>1572324293354</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
