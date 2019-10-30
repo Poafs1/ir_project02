@@ -37,7 +37,6 @@ public class JaccardSearcher extends Searcher{
 		}
 
 		Collections.sort(allResults);
-
 		for(int i=0; i<k; i++) {
 			output.add(allResults.get(i));
 		}
