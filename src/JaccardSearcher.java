@@ -13,7 +13,6 @@ public class JaccardSearcher extends Searcher{
 	public JaccardSearcher(String docFilename) {
 		super(docFilename);
 		/************* YOUR CODE HERE ******************/
-//		this.documents = Searcher.parseDocumentFromFile(docFilename);
 		this.doc = this.documents;
 		/***********************************************/
 	}
