@@ -31,8 +31,8 @@ public class StudentTester {
 		for(String query: testQueries)
 		{
 			List<SearchResult> results = searcher.search(query, k);
-//			System.out.println("@@@ Results: "+(query.length() > 50? query.substring(0, 50)+"...":query));
-//			Searcher.displaySearchResults(results);
+			System.out.println("@@@ Results: "+(query.length() > 50? query.substring(0, 50)+"...":query));
+			Searcher.displaySearchResults(results);
 			System.out.println();
 		}
 		
