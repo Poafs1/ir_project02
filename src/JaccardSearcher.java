@@ -1,6 +1,6 @@
-//Name: 
-//Section: 
-//ID: 
+//Name: Rattanavaree Muangamai - Pantita Wang - Prach Yothaprasert
+//Section: 3
+//ID: 6088092 - 6088219 - 6088234
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,35 +9,38 @@ import java.util.Set;
 import java.util.Collections;
 
 public class JaccardSearcher extends Searcher{
-	List<Document> parse;
+	private List<Document> documents;
 	public JaccardSearcher(String docFilename) {
 		super(docFilename);
 		/************* YOUR CODE HERE ******************/
-		parse = Searcher.parseDocumentFromFile(docFilename);
+		this.documents = Searcher.parseDocumentFromFile(docFilename);;
 		/***********************************************/
 	}
 
 	@Override
 	public List<SearchResult> search(String queryString, int k) {
 		/************* YOUR CODE HERE ******************/
-		List<SearchResult> recvAllResults = new ArrayList<SearchResult>();
 		List<String> tokens = Searcher.tokenize(queryString);
 		Set<String> queryTerms = new HashSet<String>(tokens);
-
-		for(int i=0; i<parse.size(); i++) {
-			Set<String> intersecDT = new HashSet<String>(parse.get(i).getTokens());
-			Set<String> unionDT = new HashSet<String>(parse.get(i).getTokens());
-			intersecDT.retainAll(queryTerms);
-			unionDT.addAll(queryTerms);
-			double calJaccard = new Double(intersecDT.size()) / new Double(unionDT.size());
-			SearchResult calAllResults = new SearchResult(parse.get(i), calJaccard);
-			recvAllResults.add(calAllResults);
-		}
-		Collections.sort(recvAllResults);
+		List<SearchResult> allResults = new ArrayList<SearchResult>();
 		List<SearchResult> output = new ArrayList<SearchResult>();
-		for(int i=0; i<10; i++) {
-			output.add(recvAllResults.get(i));
+
+		for(int i=0; i<documents.size(); i++) {
+			Set<String> intersecDocument = new HashSet<String>(documents.get(i).getTokens());
+			Set<String> unionDocument = new HashSet<String>(documents.get(i).getTokens());
+			intersecDocument.retainAll(queryTerms);
+			unionDocument.addAll(queryTerms);
+			double calculateScore = new Double(intersecDocument.size()) / new Double(unionDocument.size());
+			SearchResult getResult = new SearchResult(documents.get(i), calculateScore);
+			allResults.add(getResult);
 		}
+
+		Collections.sort(allResults);
+
+		for(int i=0; i<k; i++) {
+			output.add(allResults.get(i));
+		}
+
 		return output;
 		/***********************************************/
 	}

@@ -1,6 +1,6 @@
-//Name: 
-//Section: 
-//ID: 
+//Name: Rattanavaree Muangamai - Pantita Wang - Prach Yothaprasert
+//Section: 3
+//ID: 6088092 - 6088219 - 6088234
 
 import java.io.File;
 import java.io.IOException;
