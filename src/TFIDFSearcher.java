@@ -29,11 +29,14 @@ public class TFIDFSearcher extends Searcher
 				int countWord = Collections.frequency(doc.get(i).getTokens(), q);
 				if(countWord != 0) getTF += 1.0 + Math.log10(new Double(countWord));
 			}
+			System.out.println("ID: " + doc.get(i).getId() + " TOKENS: " + doc.get(i).getTokens());
+			System.out.println("TF Score: " + getTF);
+			System.out.println();
 			tf.add(getTF);
 		}
 
 //		found idf -> Math.log10(1 + (5999 / how many documents contains terms t))
-		
+
 
 		return null;
 		/***********************************************/
