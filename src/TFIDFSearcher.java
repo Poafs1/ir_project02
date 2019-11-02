@@ -23,19 +23,17 @@ public class TFIDFSearcher extends Searcher
 
 //		query terms -> eg. [inform, retriev]
 //		found tf
-		
+		for(int i=0; i<doc.size(); i++) {
+			int countWord = 0;
+			for(String q : queryTerms) {
+				countWord += Collections.frequency(doc.get(i).getTokens(), q);
+			}
+			double foundTF = 1 + Math.log10(countWord);
+			tf.add(foundTF);
+		}
 
 //		found idf
-		for(String q : queryTerms) {
-			int totalDoc = doc.size();
-			int df = 0;
-			for(int i=0; i<doc.size(); i++) {
-				if (doc.get(i).getTokens().contains(q)) df++;
-			}
-			double idf = Math.log10(1 + (new Double(totalDoc) / new Double(df)));
-//			System.out.println(idf);
-			df = 0;
-		}
+
 
 
 
@@ -46,3 +44,14 @@ public class TFIDFSearcher extends Searcher
 }
 
 //int countWord = Collections.frequency(doc.get(i).getTokens(), q);
+
+//		for(String q : queryTerms) {
+//				int totalDoc = doc.size();
+//				int df = 0;
+//				for(int i=0; i<doc.size(); i++) {
+//		if (doc.get(i).getTokens().contains(q)) df++;
+//		}
+//		double idf = Math.log10(1 + (new Double(totalDoc) / new Double(df)));
+////			System.out.println(idf);
+//		df = 0;
+//		}
