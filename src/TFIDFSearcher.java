@@ -19,28 +19,30 @@ public class TFIDFSearcher extends Searcher
 		/************* YOUR CODE HERE ******************/
 		List<String> tokens = Searcher.tokenize(queryString);
 		Set<String> queryTerms = new HashSet<String>(tokens);
-		List<Double> tf = new ArrayList<Double>();
 
-//		query terms -> eg. [inform, retriev]
-//		found tf -> 1 + Math.log10(freq of terms in each documents)
-		for(int i=0; i<doc.size(); i++) {
-			double getTF = 0.0;
-			for(String q : queryTerms) {
-				int countWord = Collections.frequency(doc.get(i).getTokens(), q);
-				if(countWord != 0) getTF += 1.0 + Math.log10(new Double(countWord));
+		for(String q : queryTerms) {
+			double getIDF = 0.0;
+			int df = 0;
+			for(int i=0; i<doc.size(); i++) {
+				if(doc.get(i).getTokens().contains(q)) df++;
 			}
-			System.out.println("ID: " + doc.get(i).getId() + " TOKENS: " + doc.get(i).getTokens());
-			System.out.println("TF Score: " + getTF);
+			getIDF = Math.log10(1 + (doc.size() / df));
+
+//			terms frequency (TF) -> 1 + log10(number of terms in document x)
+			System.out.println("Term: " + q);
+			for(int i=0; i<doc.size(); i++) {
+				double getTF = 0.0;
+				int countWord = Collections.frequency(doc.get(i).getTokens(), q);
+//				TF of each document x that contains query terms (q)
+				if(countWord != 0) getTF = 1 + Math.log10(countWord);
+				double getTFIDF = getTF * getIDF;
+				System.out.print(getTFIDF + " -- ");
+			}
 			System.out.println();
-			tf.add(getTF);
 		}
 
-//		found idf -> Math.log10(1 + (5999 / how many documents contains terms t))
-
-
+		System.out.println();
 		return null;
 		/***********************************************/
 	}
 }
-
-//int countWord = Collections.frequency(doc.get(i).getTokens(), q);
