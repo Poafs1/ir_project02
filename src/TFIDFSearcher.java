@@ -33,6 +33,7 @@ public class TFIDFSearcher extends Searcher
 		}
 
 //		found idf -> Math.log10(1 + (5999 / how many documents contains terms t))
+		
 
 		return null;
 		/***********************************************/
