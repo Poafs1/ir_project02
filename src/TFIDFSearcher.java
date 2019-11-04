@@ -13,32 +13,31 @@ public class TFIDFSearcher extends Searcher
 		this.doc = this.documents;
 		/***********************************************/
 	}
-	
+
 	@Override
 	public List<SearchResult> search(String queryString, int k) {
 		/************* YOUR CODE HERE ******************/
 		List<String> tokens = Searcher.tokenize(queryString);
 		Set<String> queryTerms = new HashSet<String>(tokens);
+		List<Double> tfidf = new ArrayList<Double>();
 
 		for(String q : queryTerms) {
-			double getIDF = 0.0;
+//			find tf and idf of each query
+//			find idf of each terms
 			int df = 0;
 			for(int i=0; i<doc.size(); i++) {
 				if(doc.get(i).getTokens().contains(q)) df++;
 			}
-			getIDF = Math.log10(1 + (doc.size() / df));
+			double calIDF = Math.log10(1 + (doc.size() / df));
 
-//			terms frequency (TF) -> 1 + log10(number of terms in document x)
-			System.out.println("Term: " + q);
+//			find tf in each documents
 			for(int i=0; i<doc.size(); i++) {
-				double getTF = 0.0;
+//				terms q in each documents
 				int countWord = Collections.frequency(doc.get(i).getTokens(), q);
-//				TF of each document x that contains query terms (q)
-				if(countWord != 0) getTF = 1 + Math.log10(countWord);
-				double getTFIDF = getTF * getIDF;
-				System.out.print(getTFIDF + " -- ");
+				double calTF = 1 + Math.log10(countWord);
+				double calTFIDF = calTF * calIDF;
+//				System.out.println(calTFIDF);
 			}
-			System.out.println();
 		}
 
 		System.out.println();
