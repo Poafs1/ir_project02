@@ -4,11 +4,7 @@
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.apache.commons.io.FileUtils;
 
@@ -72,7 +68,23 @@ public class SearcherEvaluator {
 	public double[] getQueryPRF(Document query, Searcher searcher, int k)
 	{
 		/*********************** YOUR CODE HERE *************************/
-		return null;
+		int docID = query.getId(); // -> answers.get(docID)
+		List<SearchResult> listOfSearch = new ArrayList<SearchResult>(searcher.search(query.getRawText(), k));
+		List<Integer> searchResultID = new ArrayList<Integer>();
+		for (int i = 0; i < listOfSearch.size(); i++) {
+			searchResultID.add(listOfSearch.get(i).getDocument().getId());
+		}
+
+		List<Integer> intersecDocument = new ArrayList<Integer>(answers.get(docID));
+		intersecDocument.retainAll(searchResultID);
+
+		double precision = Math.abs(new Double(intersecDocument.size())) / Math.abs(new Double(searchResultID.size()));
+		double recall = Math.abs(new Double(intersecDocument.size()))/ Math.abs(new Double(answers.get(docID).size()));
+		double f1 = (2 * precision * recall) / (precision + recall);
+
+		double[] result = {precision, recall, f1};
+
+		return result;
 		/****************************************************************/
 	}
 	
@@ -86,6 +98,9 @@ public class SearcherEvaluator {
 	public double[] getAveragePRF(Searcher searcher, int k)
 	{
 		/*********************** YOUR CODE HERE *************************/
+//		queries
+		
+		System.out.println();
 		return null;
 		/****************************************************************/
 	}
