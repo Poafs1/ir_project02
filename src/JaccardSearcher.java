@@ -13,7 +13,7 @@ public class JaccardSearcher extends Searcher{
 	public JaccardSearcher(String docFilename) {
 		super(docFilename);
 		/************* YOUR CODE HERE ******************/
-//		get all documents from Searcher
+    //		get all documents from Searcher
 		this.doc = this.documents;
 		/***********************************************/
 	}
@@ -50,6 +50,7 @@ public class JaccardSearcher extends Searcher{
 		for(int i=0; i<k; i++) {
 //			loop and get only k value then store in output
 			output.add(allResults.get(i));
+      
 		}
 
 		return output;
