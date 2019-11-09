@@ -71,15 +71,20 @@ public class TFIDFSearcher extends Searcher
 
 		for(int i=0; i<doc.size(); i++) {
 			HashMap<String, Double> queryWeight = new HashMap<String, Double>();
-			queryTerms.forEach(q -> {
-				double getIDF = documentsIDF.get(q);
+//			Find query weight
+			for(String q : queryTerms) {
+				double getIDF = 0.0;
+//				get IDF from documentsIDF (pass key return value)
+				if(documentsIDF.get(q) != null) getIDF = documentsIDF.get(q);
 				double getTF = 0.0;
+//				Collections.frequency -> count freq of word in each documents
 				int freq = Collections.frequency(tokenizeQuery, q);
 				if (freq > 0) getTF = 1 + Math.log10(new Double(freq));
 				double getTFIDF = getIDF * getTF;
 				queryWeight.put(q, getTFIDF);
-			});
+			}
 
+//			∑ of query weigth and document weight
 			double dotProd = 0.0;
 			for (String d : documentsWeight.get(i).keySet()) {
 				if (queryWeight.containsKey(d)) {
@@ -87,18 +92,20 @@ public class TFIDFSearcher extends Searcher
 				}
 			}
 
+//			√ of ∑ of query weight
 			double sumq = 0.0;
 			for(String q : queryWeight.keySet()) {
 				double value = queryWeight.get(q);
 				sumq += Math.pow(value, 2);
 			}
-
+//			√ of ∑ of document weight
 			double sumd = 0.0;
 			for (String d : documentsWeight.get(i).keySet()) {
 				double value = documentsWeight.get(i).get(d);
 				sumd += Math.pow(value, 2);
 			}
 
+//			calculate score
 			double calculateScore = dotProd / (Math.sqrt(sumq) * Math.sqrt(sumd));
 			SearchResult getResult = new SearchResult(doc.get(i), calculateScore);
 			allResults.add(getResult);

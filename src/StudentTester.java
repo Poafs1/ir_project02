@@ -51,9 +51,9 @@ public class StudentTester {
 		for(String query: testQueries)
 		{
 			List<SearchResult> results = searcher.search(query, k);
-//			System.out.println("@@@ Results: "+(query.length() > 50? query.substring(0, 50)+"...":query));
-//			Searcher.displaySearchResults(results);
-//			System.out.println();
+			System.out.println("@@@ Results: "+(query.length() > 50? query.substring(0, 50)+"...":query));
+			Searcher.displaySearchResults(results);
+			System.out.println();
 		}
 		
 		long endTime = System.currentTimeMillis();
@@ -112,7 +112,7 @@ public class StudentTester {
 	public static void main(String[] args)
 	{	
 		/********************* Uncomment test cases you want to test ***************/
-		testJaccardSearcher(testCorpus);
+		//testJaccardSearcher(testCorpus);
 		//testTFIDFSearcher(testCorpus);
 		//testCompareTwoSearchersOnSomeQueries(testCorpus);
 		//testCompareTwoSearchersOnAllQueries(testCorpus);
